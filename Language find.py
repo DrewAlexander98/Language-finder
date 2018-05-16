@@ -3,7 +3,6 @@ import string
 import codecs
 
 def main():
-    print(string.printable)
     text = open_file("English.txt")
     letters = language_find(text)
     letter_sort(letters)
@@ -13,7 +12,7 @@ def open_file(filename):
         string = ""
         with open(filename, encoding='utf-8') as infile:
             for line in infile:
-                line = line.encode('ascii',errors='ignore')
+                #line = line.encode('ascii',errors='ignore')
                 print(str(line))
                 string += str(line)
         return string
@@ -22,8 +21,7 @@ def open_file(filename):
         return None
 
 def language_find(string):
-    print(string)
-    string = string.replace(" ", "").replace(",", "").replace(".", "").replace(":", "").replace(";", "").replace("-", "").replace("\n", "").lower()
+    string = string.replace(" ", "").replace(",", "").replace(".", "").replace(":", "").replace(";", "").replace("-", "").replace("\n", "").replace("'", "").replace("—", "").replace("!", "").replace("”", "").lower()
     dict1 = {}
     for i in range(len(string)):
         if string[i] in dict1:
